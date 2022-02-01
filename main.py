@@ -1,16 +1,42 @@
-# This is a sample Python script.
-
-# Press Shift+F10 to execute it or replace it with your code.
-# Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
+def IsPointInSquare(x, y):
+    return abs(x) + abs(y) <= 1
 
 
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press Ctrl+F8 to toggle the breakpoint.
+def IsPointInCircle(x, y, xc, yc, r):
+    if (xc - r <= x <= xc + r) and (yc - r <= y <= yc + r):
+        return (x - xc)**2 + (y - yc)**2 <= r**2
 
 
-# Press the green button in the gutter to run the script.
-if __name__ == '__main__':
-    print_hi('PyCharm')
+def IsPointInArea(x, y):
+    return ((y >= -x) and (y >= 2 * x + 2) and
+            ((x + 1)**2 + (y - 1) ** 2) <= 4) or\
+           ((y <= -x) and (y <= 2 * x + 2) and
+            ((x + 1)**2 + (y - 1) ** 2) >= 4)
 
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
+
+def xor(x, y):
+    return x + y == 1
+
+
+def MinDivision(n):
+    i = 2
+    while n % i != 0:
+        i += 1
+        if i > n**0.5:
+            return n
+    return i
+
+
+def IsPrime(n):
+    if n == 2 or n == 3:
+        return True
+    i = 2
+    while i <= n**0.5:
+        if n % i == 0:
+            return False
+        i += 1
+    return True
+
+
+n = int(input())
+print('YES' if IsPrime(n) else 'NO')
